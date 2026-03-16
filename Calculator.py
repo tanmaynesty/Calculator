@@ -3,7 +3,6 @@ import tkinter.font as tkfont
 import math
 import datetime
 
-# --- Theme Configuration ---
 BG_COLOR    = "#0d0d0d"
 DISP_BG_COLOR = "#0a0a0a"
 DISP_FG_COLOR = "#f5f5f0"
@@ -159,19 +158,12 @@ class Calculator(tk.Tk):
     def _build_title_bar(self):
         self.title_bar = tk.Frame(self, bg=DISP_BG_COLOR, relief="flat", bd=0, highlightthickness=0)
         self.title_bar.pack(fill=tk.X, side=tk.TOP)
-
-        # Bind drag events
         self.title_bar.bind("<Button-1>", self._start_move)
         self.title_bar.bind("<B1-Motion>", self._do_move)
-
         title_label = tk.Label(self.title_bar, text="Calculator", bg=DISP_BG_COLOR, fg=DISP_SEC_COLOR, font=(self.font_family, 10, "bold"))
         title_label.pack(side=tk.LEFT, padx=16, pady=8)
-        
-        # Bind drag events to label as well
         title_label.bind("<Button-1>", self._start_move)
         title_label.bind("<B1-Motion>", self._do_move)
-
-        # Window controls
         controls_frame = tk.Frame(self.title_bar, bg=DISP_BG_COLOR)
         controls_frame.pack(side=tk.RIGHT, padx=4)
 
@@ -206,34 +198,25 @@ class Calculator(tk.Tk):
         self.f_hist_btn = (self.font_family, 12, "bold")
 
     def _build_ui(self):
-        # ── display ─────────────────────────────────────────────────────────
         disp_frame = RoundedFrame(self, bg_color=BG_COLOR, frame_color=DISP_BG_COLOR, border_color="#2a2a2a", radius=16)
         disp_frame.pack(fill=tk.X, expand=False, padx=4, pady=(0, 8))
-
         inner_disp = tk.Frame(disp_frame, bg=DISP_BG_COLOR, padx=16, pady=20)
         inner_disp.pack(fill=tk.BOTH, expand=True, padx=2, pady=2)
-        
         top_row = tk.Frame(inner_disp, bg=DISP_BG_COLOR)
         top_row.pack(fill=tk.X, pady=(0, 5))
-
         self._mem_label = tk.Label(top_row, text="", bg=DISP_BG_COLOR, fg=DISP_SEC_COLOR, font=self.f_sec, anchor=tk.W)
         self._mem_label.pack(side=tk.LEFT)
-
         self._expr_var = tk.StringVar(value="")
-        tk.Label(top_row, textvariable=self._expr_var, bg=DISP_BG_COLOR, fg=DISP_SEC_COLOR, anchor=tk.E, font=self.f_sec).pack(side=tk.RIGHT, fill=tk.X, expand=True)
-                 
+        tk.Label(top_row, textvariable=self._expr_var, bg=DISP_BG_COLOR, fg=DISP_SEC_COLOR, anchor=tk.E, font=self.f_sec).pack(side=tk.RIGHT, fill=tk.X, expand=True) 
         self._val_var = tk.StringVar(value="0")
         self._val_var_label = tk.Label(inner_disp, textvariable=self._val_var, bg=DISP_BG_COLOR, fg=DISP_FG_COLOR, anchor=tk.E, font=self.f_disp)
         self._val_var_label.pack(fill=tk.X, pady=(0, 0))
         self._val_var_label.bind("<Button-3>", self._copy_result)
         self._val_var_label.bind("<Button-2>", self._copy_result)
-        
         self._hist_frame = tk.Frame(self, bg=DISP_BG_COLOR, padx=15, pady=0)
-        
         hist_header = tk.Frame(self._hist_frame, bg=DISP_BG_COLOR)
         hist_header.pack(fill=tk.X, pady=(5, 5))
-        tk.Label(hist_header, text="HISTORY", bg=DISP_BG_COLOR, fg=DISP_SEC_COLOR, font=self.f_hist_btn).pack(side=tk.LEFT)
-                 
+        tk.Label(hist_header, text="HISTORY", bg=DISP_BG_COLOR, fg=DISP_SEC_COLOR, font=self.f_hist_btn).pack(side=tk.LEFT)  
         clear_btn = RoundButton(hist_header, bg=PANEL_BG, fg="#ff6b6b", text="Clear", text_font=self.f_hist_btn, command=lambda x: self._clear_history(), width=60, height=30)
         clear_btn.pack(side=tk.RIGHT)
 
@@ -247,54 +230,43 @@ class Calculator(tk.Tk):
         self._hist_text.tag_config("expr",   foreground=DISP_SEC_COLOR)
         self._hist_text.tag_config("result", foreground=DISP_FG_COLOR)
         self._hist_text.tag_config("sep",    foreground=PANEL_BG)
-
-        # ── button panel ────────────────────────────────────────────────────
         self.panel = RoundedFrame(self, bg_color=BG_COLOR, frame_color=PANEL_BG, border_color="#2a2a2a", radius=16)
         self.panel.pack(pady=(0, 8))
         self.panel.grid_rowconfigure(0, minsize=8)
         self.panel.grid_rowconfigure(8, minsize=14)
         self.panel.grid_columnconfigure(0, minsize=8)
         self.panel.grid_columnconfigure(5, minsize=8)
-
         sp = dict(padx=3, pady=3)
-
-        # Row 0: HIST, MC, MR, MS
         self._btn(self.panel, "HIST", 0, 0, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
         self._btn(self.panel, "MC",   0, 1, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
         self._btn(self.panel, "MR",   0, 2, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
         self._btn(self.panel, "MS",   0, 3, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
 
-        # Row 1: √, x², 1/x, DEL
         self._btn(self.panel, "√",    1, 0, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
         self._btn(self.panel, "x²",   1, 1, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
         self._btn(self.panel, "1/x",  1, 2, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
         self._btn(self.panel, "DEL",  1, 3, bg=BTN_OP, fg="#ff6b6b", text_font=self.f_fn, **sp)
 
-        # Row 2: AC, +/-, %, ÷
         self._btn(self.panel, "AC",   2, 0, bg=BTN_CLEAR, fg="#ff6b6b", text_font=self.f_fn, **sp)
         self._btn(self.panel, "+/-",  2, 1, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
         self._btn(self.panel, "%",    2, 2, bg=BTN_OP, fg=TXT_PRIMARY, text_font=self.f_fn, **sp)
         self._btn(self.panel, "÷",    2, 3, bg=BTN_OP, fg=ACCENT, **sp)
 
-        # Row 3: 7, 8, 9, ×
         self._btn(self.panel, "7",    3, 0, **sp)
         self._btn(self.panel, "8",    3, 1, **sp)
         self._btn(self.panel, "9",    3, 2, **sp)
         self._btn(self.panel, "×",    3, 3, bg=BTN_OP, fg=ACCENT, **sp)
 
-        # Row 4: 4, 5, 6, −
         self._btn(self.panel, "4",    4, 0, **sp)
         self._btn(self.panel, "5",    4, 1, **sp)
         self._btn(self.panel, "6",    4, 2, **sp)
         self._btn(self.panel, "−",    4, 3, bg=BTN_OP, fg=ACCENT, **sp)
 
-        # Row 5: 1, 2, 3, +
         self._btn(self.panel, "1",    5, 0, **sp)
         self._btn(self.panel, "2",    5, 1, **sp)
         self._btn(self.panel, "3",    5, 2, **sp)
         self._btn(self.panel, "+",    5, 3, bg=BTN_OP, fg=ACCENT, **sp)
 
-        # Row 6: 0, ., =
         self._btn(self.panel, "0",    6, 0, colspan=2, width=196, **sp)
         self._btn(self.panel, ".",    6, 2, **sp)
         self._btn(self.panel, "=",    6, 3, bg=BTN_EQ, fg=TXT_PRIMARY, hover_bg="#d4561f", **sp)
@@ -354,7 +326,7 @@ class Calculator(tk.Tk):
         self.clipboard_clear()
         self.clipboard_append(val)
         original_color = self._val_var_label.cget("fg")
-        self._val_var_label.config(fg="#34C759") # Flash green on copy
+        self._val_var_label.config(fg="#34C759")
         self.after(300, lambda: self._val_var_label.config(fg=original_color))
 
     def _update_mem_label(self):
@@ -491,7 +463,6 @@ class Calculator(tk.Tk):
             self._fresh = True
             return
             
-        # For digits and operators
         if self._fresh:
             if text in ("÷", "×", "−", "+"):
                 self._expr += text
@@ -503,11 +474,9 @@ class Calculator(tk.Tk):
             self._expr_var.set("")
         else:
             self._expr += text
-            
-        # Display the built expression length limited roughly
+
         display_str = self._expr
         if len(display_str) > 16:
-            # simple truncation for view
             self._val_var_label.config(font=(self.font_family, 32, "bold"))
         else:
             self._val_var_label.config(font=self.f_disp)
