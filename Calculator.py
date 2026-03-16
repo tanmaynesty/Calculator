@@ -7,7 +7,6 @@ BG_COLOR    = "#0d0d0d"
 DISP_BG_COLOR = "#0a0a0a"
 DISP_FG_COLOR = "#f5f5f0"
 DISP_SEC_COLOR = "#888880"
-
 PANEL_BG    = "#141414"
 BTN_NUM     = "#1c1c1e"
 BTN_OP      = "#2a2a2e"
@@ -15,7 +14,6 @@ BTN_CLEAR   = "#3a1010"
 BTN_EQ      = "#b5451b"
 TXT_PRIMARY = "#f5f5f0"
 ACCENT      = "#e8622a"
-
 WIN_W = 428
 WIN_H_NORMAL = 709
 WIN_H_HIST = 909
