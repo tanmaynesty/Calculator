@@ -5,6 +5,7 @@ A sleek, modern, and frameless calculator built entirely in Python using `tkinte
 ## 📸 Screenshots
 
 *The main frameless UI with custom window controls.*
+
 ![Main Interface](assets/main-view.png)
 
 ## ✨ Features
