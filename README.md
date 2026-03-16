@@ -4,7 +4,7 @@ A sleek, modern, and frameless calculator built entirely in Python using `tkinte
 
 ## 📸 Screenshots
 
-![Calculator Main Interface](url-to-your-image/main-view.png)
+![Main Interface](assets/main-view.png)
 *The main frameless UI with custom window controls.*
 
 ## ✨ Features
@@ -21,11 +21,27 @@ A sleek, modern, and frameless calculator built entirely in Python using `tkinte
 ## 🚀 Getting Started
 
 ### Prerequisites
-Calculator is built using standard Python libraries. You only need Python installed on your system.
+The Calculator is built using standard Python libraries. You only need Python installed on your system.
 * Python 3.x
 * `tkinter` (Usually comes pre-installed with Python on Windows/macOS. On some Linux distributions, you may need to install it via your package manager, e.g., `sudo apt install python3-tk`).
 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/yourusername/OnyxCalc.git](https://github.com/yourusername/OnyxCalc.git)
+   git clone https://github.com/tanmaynesty/Calculator
+
+2. Navigate to the project directory:
+    ```bash
+    cd Calculator
+
+3. Run the application:
+    ```bash
+    python calculator.py
+
+### 🛠️ Built With
+Python 3 - Core logic
+Tkinter - GUI framework
+Math & Datetime - Standard libraries for calculations and history logging
+
+### 🤝 Contributing
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
