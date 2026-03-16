@@ -22,7 +22,7 @@ A sleek, modern, and frameless calculator built entirely in Python using `tkinte
 
 ### Prerequisites
 The Calculator is built using standard Python libraries. You only need Python installed on your system.
-* Python 3.x
+* Python 3.10.12
 * `tkinter` (Usually comes pre-installed with Python on Windows/macOS. On some Linux distributions, you may need to install it via your package manager, e.g., `sudo apt install python3-tk`).
 
 ### Installation
