@@ -40,6 +40,7 @@ The Calculator is built using standard Python libraries. You only need Python in
 
 ### 🛠️ Built With
 Python 3 - Core logic
+
 Tkinter - GUI framework
 
 Math & Datetime - Standard libraries for calculations and history logging
