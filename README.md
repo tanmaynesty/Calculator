@@ -38,12 +38,12 @@ The Calculator is built using standard Python libraries. You only need Python in
     ```bash
     python calculator.py
 
-### 🛠️ Built With
+## 🛠️ Built With
 Python 3 - Core logic
 
 Tkinter - GUI framework
 
 Math & Datetime - Standard libraries for calculations and history logging
 
-### 🤝 Contributing
+## 🤝 Contributing
 Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
