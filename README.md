@@ -1,4 +1,4 @@
-# Calculator 🖩
+# Calculator 🔢
 
 A sleek, modern, and frameless calculator built entirely in Python using `tkinter`. This Calculator features a custom dark-mode user interface, rounded corners, a slide-out history panel, and a built-in memory system.
 
