@@ -37,7 +37,7 @@ The Calculator is built using standard Python libraries. You only need Python in
 
 3. Run the application:
     ```bash
-    python calculator.py
+    python Calculator.py
 
 ## 🛠️ Built With
 Python 3 - Core logic
